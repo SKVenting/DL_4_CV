@@ -112,7 +112,7 @@ def compute_distances_one_loop(x_train: torch.Tensor, x_test: torch.Tensor):
     # Replace "pass" statement with your code
     x_train_flat = x_train.view(num_train, -1)
     x_test_flat = x_test.view(num_test, -1)
-    # 利用广播机制
+    # take advantage of broadcasting
     for i in range(num_train):
         diff = x_test_flat - x_train_flat[i]           
         dists[i] = torch.sum(diff * diff, dim=1) 
@@ -370,7 +370,7 @@ def knn_cross_validate(
     ##########################################################################
     # Replace "pass" statement with your code
     for k in k_choices:
-    accuracies = []
+        accuracies = []
     for fold in range(num_folds):
         x_val = x_train_folds[fold]
         y_val = y_train_folds[fold]
